@@ -14,11 +14,13 @@ describe('string trim', function () {
     assert.equal(trim('testing', 'ing'), 'test');
     assert.equal(trim(' spaces ', 'spaces'), ' spaces ');
     assert.equal(trim('sums', 's'), 'um');
-    // Support arrays
+    // Supports array inputs
     assert.equal(trim('testing', ['i', 'n', 'g']), 'test');
+    // Supports function inputs
+    assert.equal(trim('testing', function () { return true; }), '');
   });
 
-  it('should support number inputs', function () {
+  it('should support arbitrary inputs', function () {
     assert.equal(trim(10, 1), '0');
   });
 

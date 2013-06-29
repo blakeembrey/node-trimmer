@@ -1,6 +1,6 @@
 {
   "name": "string-trim",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Quick module to trim any characters from either side of a string.",
   "main": "index.js",
   "scripts": {
