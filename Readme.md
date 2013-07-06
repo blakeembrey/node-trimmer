@@ -1,22 +1,24 @@
-# String Trim
+# Trimmer
 
-Quick module to trim any characters from either side of a string.
+Trim any characters from either side of a string.
 
 ## Installation
 
 ```
-npm install string-trim --save
+npm install trimmer --save
 ```
 
 ## API
 
 ```javascript
-var trim = require('string-trim');
+var trim = require('trimmer');
 ```
 
 * `trim(string [, characters])`
 * `trim.left(string [, characters])`
 * `trim.right(string [, characters])`
+
+Please note: `characters` can be one of either an string, array or function.
 
 ```javascript
 trim('  test  ') // 'test'

@@ -2,7 +2,7 @@
 var assert = require('assert'),
     trim   = require('./');
 
-describe('string trim', function () {
+describe('trimmer', function () {
   it('should trim whitespace from strings', function () {
     assert.equal(trim('    testing   '), 'testing');
     assert.equal(trim('\nnew lines\n'), 'new lines');
@@ -20,7 +20,7 @@ describe('string trim', function () {
     assert.equal(trim('testing', function () { return true; }), '');
   });
 
-  it('should support arbitrary inputs', function () {
+  it('should coerce arbitrary inputs', function () {
     assert.equal(trim(10, 1), '0');
   });
 

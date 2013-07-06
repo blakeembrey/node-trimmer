@@ -1,18 +1,19 @@
 {
-  "name": "string-trim",
-  "version": "0.0.2",
-  "description": "Quick module to trim any characters from either side of a string.",
+  "name": "trimmer",
+  "version": "0.0.3",
+  "description": "Trim any characters from either side of a string.",
   "main": "index.js",
   "scripts": {
     "test": "./node_modules/mocha/bin/mocha test.js"
   },
-  "repository": "https://github.com/blakeembrey/string-trim",
+  "repository": "https://github.com/blakeembrey/node-trimmer",
   "keywords": [
     "trim",
     "string",
     "left",
     "right",
-    "characters"
+    "characters",
+    "function"
   ],
   "author": "Blake Embrey",
   "license": "MIT",
