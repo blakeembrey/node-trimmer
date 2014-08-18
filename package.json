@@ -1,6 +1,6 @@
 {
   "name": "trimmer",
-  "version": "0.0.3",
+  "version": "1.0.0",
   "description": "Trim any characters from either side of a string.",
   "main": "index.js",
   "scripts": {
