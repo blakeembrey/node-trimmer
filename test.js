@@ -1,6 +1,6 @@
 /* global describe, it */
-var assert = require('assert'),
-    trim   = require('./');
+var assert = require('assert');
+var trim   = require('./');
 
 describe('trimmer', function () {
   it('should trim whitespace from strings', function () {
