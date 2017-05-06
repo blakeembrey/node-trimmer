@@ -22,7 +22,7 @@
   },
   "license": "MIT",
   "devDependencies": {
-    "istanbul": "^0.2.10",
-    "mocha": "^1.19.0"
+    "istanbul": "^0.4.5",
+    "mocha": "^3.3.0"
   }
 }
