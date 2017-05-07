@@ -3,8 +3,15 @@
   "version": "1.0.0",
   "description": "Trim any characters from either side of a string.",
   "main": "index.js",
+  "typings": "index.d.ts",
+  "files": [
+    "index.js",
+    "index.d.ts"
+  ],
   "scripts": {
-    "test": "istanbul cover _mocha -- -R spec"
+    "specs": "istanbul cover _mocha -- -R spec",
+    "lint": "standard",
+    "test": "npm run lint && npm run specs"
   },
   "repository": "https://github.com/blakeembrey/node-trimmer",
   "keywords": [
@@ -23,6 +30,7 @@
   "license": "MIT",
   "devDependencies": {
     "istanbul": "^0.4.5",
-    "mocha": "^3.3.0"
+    "mocha": "^3.3.0",
+    "standard": "^10.0.2"
   }
 }

@@ -1,59 +1,54 @@
-// By default we'll trim all whitespace characters
-var whitespace = ' \n\r\t\f\x0b\xa0\u2000\u2001\u2002\u2003\u2004\u2005\u2006\u2007\u2008\u2009\u200a\u200b\u2028\u2029\u3000';
+var WHITESPACE_CHARS = ' \n\r\t\f\x0b\xa0\u2000\u2001\u2002\u2003\u2004\u2005\u2006\u2007\u2008\u2009\u200a\u200b\u2028\u2029\u3000'
 
-// Turn the input into a function, if it's a string or array input we turn it
-// into an object to achieve constant time lookups
-var toFn = function (str) {
-  if (typeof str === 'function') { return str; }
+module.exports = trim
 
-  if (Array.isArray(str)) {
-    str = str.join('');
-  } else {
-    str = String(str);
-  }
+/**
+ * Convert the input value to a function.
+ */
+function toFn (value) {
+  if (typeof value === 'function') return value
 
-  var obj = Object.create(null),
-      i   = 0,
-      char;
+  var str = Array.isArray(value) ? value : String(value)
+  var obj = Object.create(null)
 
-  while (char = str[i++]) {
-    obj[char] = true;
+  for (var i = 0; i < str.length; i++) {
+    obj[str[i]] = true
   }
 
   return function (char) {
-    return char in obj;
-  };
-};
-
-// The default exported function trims both left and right of the string
-var trim = module.exports = function (str, chars) {
-  return trim.right(trim.left(str, chars), chars);
-};
-
-trim.left = function (str, chars) {
-  var fn = toFn(chars || whitespace),
-      i  = 0,
-      char;
-
-  str = String(str);
-
-  while ((char = str[i]) && fn(char)) {
-    i++;
+    return obj[char]
   }
+}
 
-  return str.substr(i);
-};
+/**
+ * The default trim function executes both sides.
+ */
+function trim (str, chars) {
+  var fn = toFn(chars || WHITESPACE_CHARS)
 
-trim.right = function (str, chars) {
-  var fn = toFn(chars || whitespace),
-      i  = str.length - 1,
-      char;
+  return trim.right(trim.left(str, fn), fn)
+}
 
-  str = String(str);
+/**
+ * Trim characters starting from the left of the string.
+ */
+trim.left = function trimLeft (str, chars) {
+  var fn = toFn(chars || WHITESPACE_CHARS)
+  var i = -1
 
-  while ((char = str[i]) && fn(char)) {
-    i--;
-  }
+  while (i < str.length && fn(str[++i])) {}
 
-  return str.substr(0, i + 1);
-};
+  return str.substr(i)
+}
+
+/**
+ * Trim characters starting from the right of the string.
+ */
+trim.right = function trimRight (str, chars) {
+  var fn = toFn(chars || WHITESPACE_CHARS)
+  var i = str.length
+
+  while (i > 0 && fn(str[--i])) {}
+
+  return str.substr(0, i + 1)
+}
